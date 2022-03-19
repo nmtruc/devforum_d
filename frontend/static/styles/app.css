@@ -26,8 +26,8 @@ img {
 }
 
 /*=======================
-    Header Section
-  ========================*/
+  Header Section
+========================*/
 .header {
   position: sticky;
   z-index: 111;
@@ -175,8 +175,8 @@ img {
 }
 
 /*=======================
-    Hero Section
-  ========================*/
+  Hero Section
+========================*/
 
 .hero-section {
   height: 40vh;
@@ -267,8 +267,8 @@ img {
 }
 
 /*=======================
-    Developers
-  ========================*/
+  Developers
+========================*/
 
 .devlist {
   margin-top: 8rem;
@@ -304,8 +304,8 @@ img {
 }
 
 /*=======================
-    Pagination
-  ========================*/
+  Pagination
+========================*/
 .pagination {
   margin-top: 8rem;
   margin-bottom: 10rem;
@@ -329,8 +329,8 @@ img {
 }
 
 /*=======================
-    Profile
-  ========================*/
+  Profile
+========================*/
 
 .profile .card > .dev {
   padding: 4rem;
@@ -415,8 +415,8 @@ img {
 }
 
 /*=======================
-    Single Projects
-  ========================*/
+  Single Projects
+========================*/
 
 .singleProject .column--1of3 {
   order: 2;
@@ -492,8 +492,8 @@ img {
 }
 
 /*=======================
-    Projects Page
-  ========================*/
+  Projects Page
+========================*/
 .projects > .hero-section {
   background: var(--color-sub-lighter);
   height: 30vh;
@@ -571,8 +571,8 @@ img {
 }
 
 /*=======================
-    Account Settings
-  ========================*/
+  Account Settings
+========================*/
 
 .settingsPage .dev > .settings__btn {
   display: inline-block;
@@ -644,8 +644,8 @@ img {
 }
 
 /*=======================
-    Login/SignUp
-  ========================*/
+  Login/SignUp
+========================*/
 
 .auth {
   width: 100%;
@@ -724,8 +724,8 @@ img {
 }
 
 /*=======================
-    Inbox
-  ========================*/
+  Inbox
+========================*/
 
 .inbox {
   height: 90vh;
@@ -790,8 +790,8 @@ img {
 }
 
 /*=======================
-    Single Message
-  ========================*/
+  Single Message
+========================*/
 
 .messagePage .message {
   list-style: none;
@@ -836,8 +836,8 @@ img {
 }
 
 /*=======================
-    Form Page
-  ========================*/
+  Form Page
+========================*/
 
 .formPage .formWrapper {
   list-style: none;
@@ -852,17 +852,4 @@ img {
   color: var(--color-sub);
   margin-bottom: 1rem;
   margin-top: 2rem;
-}
-
-/*=======================
-    Fixed Position Alerts Wrapper
-  ========================*/
-
-.alert {
-  position: fixed;
-  left: 50%;
-  top: 120px;
-  transform: translate(-50%, -50%);
-
-  z-index: 99999;
 }
