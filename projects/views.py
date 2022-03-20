@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-from .models import *
-from .forms import *
+from .models import Project
+from .forms import ProjectForm
 
 
 def projects(request):
