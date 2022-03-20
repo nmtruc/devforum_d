@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileForm
 
 
 def login_user(request):
@@ -78,3 +78,16 @@ def user_account(request):
     projects = profile.project_set.all()
     context = {'profile': profile, 'skills': skills, 'projects': projects}
     return render(request, 'account.html', context)
+
+
+@login_required(login_url='login')
+def update_account(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('account')
+    context = {'form': form}
+    return render(request, 'profile-form.html', context)
