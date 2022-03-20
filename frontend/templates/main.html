@@ -1,7 +1,5 @@
-{% load static %}
-
-
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
@@ -10,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
     <!-- Icon - IconMonster -->
     <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
     <!-- Mumble UI -->
@@ -25,15 +23,19 @@
     {% include 'navbar.html' %}
 
     {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-            {% endfor %}
-    </ul>
+    {% for message in messages %}
+    <div class="alert  alert--{{message.tags}}">
+        <p class="alert__message">{{message}}</p>
+        <button class="alert__close">x</button>
+    </div>
+    {% endfor %}
     {% endif %}
 
     {% block content %}
     {% endblock %}
+
+    <script src="{% static 'uikit/app.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

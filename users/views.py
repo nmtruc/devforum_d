@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from .forms import CustomUserCreationForm
 
 
 def login_user(request):
@@ -17,7 +18,7 @@ def login_user(request):
         try:
             user = User.objects.get(username=username)
         except:
-            messages.error(request, 'Username does not exist')
+            pass
 
         user = authenticate(request, username=username, password=password)
 
@@ -25,14 +26,34 @@ def login_user(request):
             login(request, user)
             return redirect('profiles')
         else:
-            messages.error(request, 'Username or password is incorrect')
+            messages.error(request, 'Username or password is incorrect.')
 
     return render(request, 'login.html')
 
 
 def logout_user(request):
     logout(request)
+    messages.info(request, 'User was logged out.')
     return redirect('login')
+
+
+def register_user(request):
+    form = CustomUserCreationForm()
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request, 'User account was created.')
+            login(request, user)
+            return redirect('profiles')
+        else:
+            messages.error(
+                request, 'An error has occurred during registration.')
+
+    context = {'form': form}
+    return render(request, 'register.html', context)
 
 
 def profiles(request):
