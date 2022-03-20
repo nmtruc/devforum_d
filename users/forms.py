@@ -21,10 +21,22 @@ class CustomUserCreationForm(UserCreationForm):
 class ProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ['name', 'email', 'username', 'location', 'short_intro', 'bio', 'profile_image',
-                  'social_github', 'social_twitter', 'social_linkedin', 'social_youtube', 'social_website']
+        fields = '__all__'
+        exclude = ['user']
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
+        for k, v in self.fields.items():
+            v.widget.attrs.update({'class': 'input input--text'})
+
+
+class SkillForm(ModelForm):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+        exclude = ['owner']
+
+    def __init__(self, *args, **kwargs):
+        super(SkillForm, self).__init__(*args, **kwargs)
         for k, v in self.fields.items():
             v.widget.attrs.update({'class': 'input input--text'})

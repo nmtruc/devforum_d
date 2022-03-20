@@ -10,4 +10,7 @@ urlpatterns = [
     path('user-profile/<str:pk>/', user_profile, name='user-profile'),
     path('account/', user_account, name='account'),
     path('update-account/', update_account, name='update-account'),
+    path('create-skill/', create_skill, name='create-skill'),
+    path('update-skill/<str:pk>/', update_skill, name='update-skill'),
+    path('delete-skill/<str:pk>/', delete_skill, name='delete-skill'),
 ]
