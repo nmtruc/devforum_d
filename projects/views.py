@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .models import Project
-from .forms import ProjectForm
+from .forms import ProjectForm, ReviewForm
 from .utils import *
 
 
@@ -20,7 +20,16 @@ def projects(request):
 
 def project(request, pk):
     project = Project.objects.get(id=pk)
-    context = {'project': project}
+    form = ReviewForm()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        review = form.save(commit=False)
+        review.project = project
+        review.owner = request.user.profile
+        review.save()
+        project.get_vote_count
+        return redirect('project', pk=project.id)
+    context = {'project': project, 'form': form}
     return render(request, 'single-project.html', context)
 
 

@@ -20,10 +20,33 @@ class Project(models.Model):
                           primary_key=True, editable=False)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['-vote_ratio', '-vote_total', 'title']
 
     def __str__(self):
         return self.title
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.featured_image.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def reviewers(self):
+        queryset = self.review_set.all().values_list('owner__id', flat=True)
+        return queryset
+
+    @property
+    def get_vote_count(self):
+        reviews = self.review_set.all()
+        up_votes = reviews.filter(value='up').count()
+        total_votes = reviews.count()
+        ratio = (up_votes/total_votes)*100
+        self.vote_total = total_votes
+        self.vote_ratio = ratio
+        self.save()
 
 
 class Review(models.Model):
