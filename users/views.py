@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile, Message
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm
 from .utils import *
 
@@ -139,3 +139,14 @@ def delete_skill(request, pk):
         return redirect('account')
     context = {'object': skill}
     return render(request, 'delete-form.html', context)
+
+
+def inbox(request):
+    profile = request.user.profile
+    message_request = profile.messages.all()
+    unread_count = message_request.filter(is_read=False).count()
+    context = {
+        'message_request': message_request,
+        'unread_count': unread_count,
+    }
+    return render(request, 'inbox.html', context)
