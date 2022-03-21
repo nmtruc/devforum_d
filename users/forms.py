@@ -40,3 +40,14 @@ class SkillForm(ModelForm):
         super(SkillForm, self).__init__(*args, **kwargs)
         for k, v in self.fields.items():
             v.widget.attrs.update({'class': 'input input--text'})
+
+
+class MessageForm(ModelForm):
+    class Meta:
+        model = Message
+        fields = ['name', 'email', 'subject', 'body']
+
+    def __init__(self, *args, **kwargs):
+        super(MessageForm, self).__init__(*args, **kwargs)
+        for k, v in self.fields.items():
+            v.widget.attrs.update({'class': 'input input--text'})
