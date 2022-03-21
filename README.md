@@ -6,9 +6,9 @@ Django | A forum website for developers <br/>
 >. Simple features such as search, paginate, view, comment, rate others works <br/>
 
 # screenshots
->. Home Page <br/>
+Home Page <br/>
 <img src="./README/DevSearch Home.jpg">
->. Projects Page <br/>
+Projects Page <br/>
 <img src="./README/DevSearch Projects.jpg">
->. Profile Page <br/>
+Profile Page <br/>
 <img src="./README/DevSearch Profile.jpg">
