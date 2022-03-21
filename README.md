@@ -7,8 +7,8 @@ Django | A forum website for developers <br/>
 
 # screenshots
 >. Home Page <br/>
-<img src="./frontend/static/images/Devsearch Home.jpg">
+<img src="./frontend/static/images/DevSearch Home.jpg">
 >. Projects Page <br/>
-<img src="./frontend/static/images/Devsearch Projects.jpg">
+<img src="./frontend/static/images/DevSearch Projects.jpg">
 >. Profile Page <br/>
-<img src="./frontend/static/images/Devsearch Profile.jpg">
+<img src="./frontend/static/images/DevSearch Profile.jpg">
