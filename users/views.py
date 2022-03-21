@@ -141,6 +141,7 @@ def delete_skill(request, pk):
     return render(request, 'delete-form.html', context)
 
 
+@login_required(login_url='login')
 def inbox(request):
     profile = request.user.profile
     message_request = profile.messages.all()
@@ -150,3 +151,13 @@ def inbox(request):
         'unread_count': unread_count,
     }
     return render(request, 'inbox.html', context)
+
+
+@login_required(login_url='login')
+def view_message(request, pk):
+    profile = request.user.profile
+    message = profile.messages.get(id=pk)
+    context = {
+        'message': message
+    }
+    return render(request, 'message.html', context)
